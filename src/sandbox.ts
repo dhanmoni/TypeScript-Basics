@@ -1,28 +1,18 @@
-let greet: Function;
+type StringOrNum = string | number;
+type objWithName = { name: string; uid: StringOrNum };
 
-greet = () => {
-  console.log("hello world");
+const greet = (user: { name: string; uid: string | number }) => {
+  console.log(`${user.name} with uid ${user.uid} says hello `);
 };
-// greet = 'hello' --doesnot work;
 
-const add = (a: number, b: number, c: number | string = 10) => {
-  console.log(a + b);
-  console.log(c);
+const logDetails = (item: string, uid: string | number) => {
+  console.log(`${item} has uid of ${uid}`);
 };
-//c is optional if it has '?' infront of it -- c?:number| string;
-//we can send default paremeter by using = sign -- c: number | string = 10
 
-add(5, 20); // 25
-// add('helo', 29) -- doesnot work
-
-const minus = (a: number, b: number) => {
-  return a - b;
+const greetAgain = (user: objWithName) => {
+  console.log(`${user.name} with uid ${user.uid} says hello `);
 };
-let result = minus(10, 8);
-// result = 'helo' --doesnot work
 
-//using explicit return type on function
-const multilpy = (a: number, b: number): number => {
-  return a * b;
+const logDetailsAgain = (item: string, uid: StringOrNum) => {
+  console.log(`${item} has uid of ${uid}`);
 };
-let result2 = multilpy(10, 8);
