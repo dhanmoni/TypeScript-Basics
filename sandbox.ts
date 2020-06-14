@@ -1,25 +1,43 @@
-let character = "mario";
-let age = 20;
-let isBlackBelt = true;
+//ARRAYS--
+let names = ["mario", "luigi", "yoshi"];
 
-//age = '20' --cannot do this
-age = 30; //--can do this.
+// names = 'hello' -- doesnot work
 
-//character = 20 -- cannot do this;
-character = "luigi"; //--can do this;
+names.push("toad"); // works;
+//names.push(20) --doesnot work
+// names[0] = 3 --doesnot work;
 
-//isBlackBelt = 'yes' --cannot do this
-isBlackBelt = false; //-- can do this
+let numbers = [10, 20, 30, 40];
+numbers.push(24); //works;
+//numbers.push('dhan')-- doesnot work
 
-const circ1 = (diameter) => {
-  return diameter * Math.PI; //Math is build into javascript, so TS inherits it as TS is superset of JS
+let mixed = ["ken", 4, "chun-li", 10];
+
+mixed.push("hello"); //works;
+mixed.push(10); //works too;
+mixed[2] = "ryu";
+
+//OBJECTS---
+let ninja = {
+  name: "mario",
+  belt: "black",
+  age: 30,
 };
 
-console.log(circ1("hello")); //doesnot give error directly.
+// ninja.age = '30' --doesnot work;
+ninja.age = 40; //works
+// ninja.skills = ['fighting', 'sneaking'] --doesnot work--cannot add additional properties..
 
-const circ2 = (diameter: number) => {
-  return diameter * Math.PI; //Math is build into javascript, so TS inherits it as TS is superset of JS
+ninja = {
+  name: "yoshi",
+  belt: "orange",
+  age: 30,
 };
 
-//console.log(circ2("hello")); //now gives an error.
-console.log(circ2(7.5)); //now it works as expected!
+//this doesnot work --
+// ninja = {
+//   name:'yoshi',
+//   belt: 'orange',
+//   //age : 30
+//    skills: []
+// }
