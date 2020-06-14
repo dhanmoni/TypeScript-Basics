@@ -1,43 +1,51 @@
-//ARRAYS--
-let names = ["mario", "luigi", "yoshi"];
+//explicit types--
+let character: string;
+let age: number;
+let isLoggedIn: boolean;
 
-// names = 'hello' -- doesnot work
+// age = 'luigi' --doesnot work
+age = 30; //fine
 
-names.push("toad"); // works;
-//names.push(20) --doesnot work
-// names[0] = 3 --doesnot work;
+// isLoggedIn = 26 --doesnot work
+isLoggedIn = true; //fine
 
-let numbers = [10, 20, 30, 40];
-numbers.push(24); //works;
-//numbers.push('dhan')-- doesnot work
+//Arrays--
+let ninjas: string[];
+//initialize with something--
+let numbers: number[] = [];
 
-let mixed = ["ken", 4, "chun-li", 10];
+// ninjas = [10, 20] --doesnot work;
+ninjas = ["yoshi", "mario"];
+numbers.push(10); //works
 
-mixed.push("hello"); //works;
-mixed.push(10); //works too;
-mixed[2] = "ryu";
+//union types--
+let mixed: (string | number | boolean)[] = [];
 
-//OBJECTS---
-let ninja = {
+mixed.push(10);
+mixed.push("hello");
+mixed.push(true);
+console.log(mixed); //[10, "hello", true]
+
+let uid: string | number;
+uid = 1033; //works
+uid = "1099"; //works
+
+//objects--
+let ninjaOne: object;
+
+ninjaOne = {
   name: "mario",
-  belt: "black",
-  age: 30,
+  age: 20,
+};
+// ninjaOne = 'hello' --doesnot work
+// ninjaOne = [] --this.work for type object
+
+let ninjaTwo: {
+  name: string;
+  age: number;
 };
 
-// ninja.age = '30' --doesnot work;
-ninja.age = 40; //works
-// ninja.skills = ['fighting', 'sneaking'] --doesnot work--cannot add additional properties..
-
-ninja = {
-  name: "yoshi",
-  belt: "orange",
-  age: 30,
+ninjaTwo = {
+  name: "mario",
+  age: 20,
 };
-
-//this doesnot work --
-// ninja = {
-//   name:'yoshi',
-//   belt: 'orange',
-//   //age : 30
-//    skills: []
-// }

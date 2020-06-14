@@ -1,34 +1,37 @@
-//ARRAYS--
-var names = ["mario", "luigi", "yoshi"];
-// names = 'hello' -- doesnot work
-names.push("toad"); // works;
-//names.push(20) --doesnot work
-// names[0] = 3 --doesnot work;
-var numbers = [10, 20, 30, 40];
-numbers.push(24); //works;
-//numbers.push('dhan')-- doesnot work
-var mixed = ["ken", 4, "chun-li", 10];
-mixed.push("hello"); //works;
-mixed.push(10); //works too;
-mixed[2] = "ryu";
-//OBJECTS---
-var ninja = {
+//explicit types--
+var character;
+var age;
+var isLoggedIn;
+// age = 'luigi' --doesnot work
+age = 30; //fine
+// isLoggedIn = 26 --doesnot work
+isLoggedIn = true; //fine
+//Arrays--
+var ninjas;
+//initialize with something--
+var numbers = [];
+// ninjas = [10, 20] --doesnot work;
+ninjas = ["yoshi", "mario"];
+numbers.push(10); //works
+//union types--
+var mixed = [];
+mixed.push(10);
+mixed.push("hello");
+mixed.push(true);
+console.log(mixed); //[10, "hello", true]
+var uid;
+uid = 1033; //works
+uid = "1099"; //works
+//objects--
+var ninjaOne;
+ninjaOne = {
     name: "mario",
-    belt: "black",
-    age: 30
+    age: 20
 };
-// ninja.age = '30' --doesnot work;
-ninja.age = 40; //works
-// ninja.skills = ['fighting', 'sneaking'] --doesnot work--cannot add additional properties..
-ninja = {
-    name: "yoshi",
-    belt: "orange",
-    age: 30
+// ninjaOne = 'hello' --doesnot work
+// ninjaOne = [] --this.work for type object
+var ninjaTwo;
+ninjaTwo = {
+    name: "mario",
+    age: 20
 };
-//this doesnot work --
-// ninja = {
-//   name:'yoshi',
-//   belt: 'orange',
-//   //age : 30
-//    skills: []
-// }
