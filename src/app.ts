@@ -1,18 +1,27 @@
-// const anchor = document.querySelector('a');
+class Invoice {
+  client: string;
+  details: string;
+  amount: number;
 
-// console.log(anchor.href) // warning- Object is possibly null
+  constructor(c: string, d: string, a: number) {
+    this.client = c;
+    this.details = d;
+    this.amount = a;
+  }
 
-// const anchor = document.querySelector('a');
-// if(anchor) {
-//   console.log(anchor.href)
-// }
-const anchor = document.querySelector("a")!;
+  format() {
+    return `${this.client} owes ₹${this.amount} for ${this.details}`;
+  }
+}
 
-console.log(anchor.href); // warning goes away by putting the ! mark
+const invOne = new Invoice("mario", "work on mario website", 1000);
+const invTwo = new Invoice("luigi", "work on luigi website", 1500);
 
-//Type casting--
+let invoices: Invoice[] = [];
+invoices.push(invOne);
+invoices.push(invTwo);
 
-const formOne = document.querySelector("form")!;
+console.log(invoices);
 
 const form = document.querySelector(".new-item-form") as HTMLFormElement;
 //console.log(form.children)

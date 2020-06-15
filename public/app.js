@@ -1,14 +1,21 @@
 "use strict";
-// const anchor = document.querySelector('a');
-// console.log(anchor.href) // warning- Object is possibly null
-// const anchor = document.querySelector('a');
-// if(anchor) {
-//   console.log(anchor.href)
-// }
-var anchor = document.querySelector("a");
-console.log(anchor.href); // warning goes away by putting the ! mark
-//Type casting--
-var formOne = document.querySelector("form");
+var Invoice = /** @class */ (function () {
+    function Invoice(c, d, a) {
+        this.client = c;
+        this.details = d;
+        this.amount = a;
+    }
+    Invoice.prototype.format = function () {
+        return this.client + " owes \u20B9" + this.amount + " for " + this.details;
+    };
+    return Invoice;
+}());
+var invOne = new Invoice("mario", "work on mario website", 1000);
+var invTwo = new Invoice("luigi", "work on luigi website", 1500);
+var invoices = [];
+invoices.push(invOne);
+invoices.push(invTwo);
+console.log(invoices);
 var form = document.querySelector(".new-item-form");
 //console.log(form.children)
 var type = document.querySelector("#type");
