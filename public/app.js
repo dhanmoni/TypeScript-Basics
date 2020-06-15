@@ -54,14 +54,27 @@ const list = new ListTemplate(ul);
 form.addEventListener("submit", (e) => {
     e.preventDefault();
     let doc;
+    // if (type.value === "invoice") {
+    //   doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber);
+    // } else {
+    //   doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
+    // }
+    //USING TUPLES----
+    let values;
+    values = [tofrom.value, details.value, amount.valueAsNumber];
     if (type.value === "invoice") {
-        doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber);
+        doc = new Invoice(...values);
     }
     else {
-        doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
+        doc = new Payment(...values);
     }
+    //----------------
     list.render(doc, type.value, "end");
 });
+//TUPLES --
+let tup = ["ryu", 25, true];
+tup[0] = "ken"; //can do this
+// tup[0] = true --cannot do this
 //GENERICS-----
 // const addUID = <T extends object>(obj: T) => {
 //   let uid = Math.floor(Math.random() * 100);
@@ -91,22 +104,26 @@ form.addEventListener("submit", (e) => {
 // };
 // console.log(docThree, docFour);
 //ENUMS-----
-var ResourceType;
-(function (ResourceType) {
-    ResourceType[ResourceType["BOOK"] = 0] = "BOOK";
-    ResourceType[ResourceType["AUTHOR"] = 1] = "AUTHOR";
-    ResourceType[ResourceType["FILM"] = 2] = "FILM";
-    ResourceType[ResourceType["DIRECTOR"] = 3] = "DIRECTOR";
-    ResourceType[ResourceType["PERSON"] = 4] = "PERSON";
-})(ResourceType || (ResourceType = {}));
-const docOne = {
-    uid: 1,
-    resourceType: ResourceType.BOOK,
-    data: { title: "name of the wind" },
-};
-const docTwo = {
-    uid: 10,
-    resourceType: ResourceType.PERSON,
-    data: { name: "Yoshi" },
-};
-console.log(docOne, docTwo);
+// enum ResourceType {
+//   BOOK,
+//   AUTHOR,
+//   FILM,
+//   DIRECTOR,
+//   PERSON,
+// }
+// interface Resource<T> {
+//   uid: number;
+//   resourceType: ResourceType;
+//   data: T;
+// }
+// const docOne: Resource<object> = {
+//   uid: 1,
+//   resourceType: ResourceType.BOOK,
+//   data: { title: "name of the wind" },
+// };
+// const docTwo: Resource<object> = {
+//   uid: 10,
+//   resourceType: ResourceType.PERSON,
+//   data: { name: "Yoshi" },
+// };
+// console.log(docOne, docTwo);

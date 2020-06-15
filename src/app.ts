@@ -72,14 +72,31 @@ form.addEventListener("submit", (e: Event) => {
   e.preventDefault();
 
   let doc: HasFormatter;
+  // if (type.value === "invoice") {
+  //   doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber);
+  // } else {
+  //   doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
+  // }
+
+  //USING TUPLES----
+  let values: [string, string, number];
+  values = [tofrom.value, details.value, amount.valueAsNumber];
+
   if (type.value === "invoice") {
-    doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber);
+    doc = new Invoice(...values);
   } else {
-    doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
+    doc = new Payment(...values);
   }
+  //----------------
 
   list.render(doc, type.value, "end");
 });
+
+//TUPLES --
+
+let tup: [string, number, boolean] = ["ryu", 25, true];
+tup[0] = "ken"; //can do this
+// tup[0] = true --cannot do this
 
 //GENERICS-----
 
@@ -120,30 +137,30 @@ form.addEventListener("submit", (e: Event) => {
 
 //ENUMS-----
 
-enum ResourceType {
-  BOOK,
-  AUTHOR,
-  FILM,
-  DIRECTOR,
-  PERSON,
-}
+// enum ResourceType {
+//   BOOK,
+//   AUTHOR,
+//   FILM,
+//   DIRECTOR,
+//   PERSON,
+// }
 
-interface Resource<T> {
-  uid: number;
-  resourceType: ResourceType;
-  data: T;
-}
+// interface Resource<T> {
+//   uid: number;
+//   resourceType: ResourceType;
+//   data: T;
+// }
 
-const docOne: Resource<object> = {
-  uid: 1,
-  resourceType: ResourceType.BOOK,
-  data: { title: "name of the wind" },
-};
+// const docOne: Resource<object> = {
+//   uid: 1,
+//   resourceType: ResourceType.BOOK,
+//   data: { title: "name of the wind" },
+// };
 
-const docTwo: Resource<object> = {
-  uid: 10,
-  resourceType: ResourceType.PERSON,
-  data: { name: "Yoshi" },
-};
+// const docTwo: Resource<object> = {
+//   uid: 10,
+//   resourceType: ResourceType.PERSON,
+//   data: { name: "Yoshi" },
+// };
 
-console.log(docOne, docTwo);
+// console.log(docOne, docTwo);
