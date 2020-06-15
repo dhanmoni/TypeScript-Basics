@@ -1,13 +1,22 @@
 class Invoice {
-  client: string;
-  details: string;
-  amount: number;
+  // readonly client: string; //readonly allows only to read the value outside or inside the class but not change it.
+  // private details: string; //private only allows to read and write value within the class but not outside the class
+  // public amount: number; //can read and write anywhere.
 
-  constructor(c: string, d: string, a: number) {
-    this.client = c;
-    this.details = d;
-    this.amount = a;
-  }
+  // constructor(c: string, d: string, a: number) {
+  //   this.client = c;
+  //   this.details = d;
+  //   this.amount = a;
+  // }
+
+  //---SHORTHAND--- WHEN USING ACCESS MODIFIERS
+
+  constructor(
+    readonly client: string,
+    private details: string,
+    public amount: number
+  ) {}
+  //---SHORTHAND---
 
   format() {
     return `${this.client} owes ₹${this.amount} for ${this.details}`;
@@ -21,7 +30,9 @@ let invoices: Invoice[] = [];
 invoices.push(invOne);
 invoices.push(invTwo);
 
-console.log(invoices);
+invoices.forEach((inv) => {
+  console.log(inv.client, inv.amount, inv.format());
+});
 
 const form = document.querySelector(".new-item-form") as HTMLFormElement;
 //console.log(form.children)
